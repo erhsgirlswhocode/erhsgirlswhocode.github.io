@@ -49,7 +49,7 @@ strong, b { font-weight: 700; }
   --shadow-step: var(--step) var(--step) 0 rgba(255, 95, 181, 0.18);
   --shadow-step-soft: calc(var(--step) + 2px) calc(var(--step) + 5px) 0 rgba(255, 95, 181, 0.12);
 
-  /* Background pattern sizes (slightly smaller) */
+  /* Background pattern sizes*/
   --dot: 9px;
   --grid: 52px;
 
@@ -65,7 +65,7 @@ strong, b { font-weight: 700; }
   --t-lg: 30px;        /* section titles */
   --t-xl: clamp(36px, 4.2vw, 58px); /* hero title */
 
-  /* Consistent title->body gaps (smaller) */
+  /* Consistent title->body gaps*/
   --gap-xl: 16px;
   --gap-lg: 14px;
   --gap-md: 10px;
@@ -465,7 +465,7 @@ h1, h2, h3, h4{ margin: 0; }
   position: relative;
   overflow: hidden;
 
-  /* ✅ layout: text + image */
+  /* layout: text + image */
   display: grid;
   grid-template-columns: 1fr;
   gap: 18px;
@@ -588,7 +588,6 @@ h1, h2, h3, h4{ margin: 0; }
 
 /* =========================================================
    HOUR OF CODE - PHOTO GRID
-   Purpose: many small photos without feeling crowded
 ========================================================= */
 .hoc-photos{
   margin-top: 14px;
