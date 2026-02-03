@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GWC @ Eleanor Roosevelt High School</title>
+  <link rel="stylesheet" href="styles.css" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- =========================================================
+       HEADER / NAV
+  ========================================================== -->
+  <header class="site-header">
+    <div class="u-container nav">
+      <div class="nav__brand">
+        <div class="brand__logo">
+            <img src="assets/images/logo.png" alt="GWC ERHS Logo">
+        </div>
+        <div class="brand__text">
+          <div class="brand__title">GWC @ ERHS</div>
+          <div class="brand__sub">Eleanor Roosevelt High School</div>
+        </div>
+      </div>
+
+      <nav class="nav__links" aria-label="Main Navigation">
+        <a class="nav__link nav__link--active" href="index.html">Home</a>
+        <a class="nav__link" href="hour-of-code.html">Hour of Code</a>
+        <a class="nav__link" href="contact.html">Contact</a>
+        <a class="nav__link" href="officers.html">Officer Board</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    
+        <!-- =========================================================
+                HERO (Poster-style)
+            ========================================================== -->
+        <section class="hero">
+          <div class="u-container">
+            <div class="panel hero__panel">
+
+              <div class="hero__content u-stack">
+                <span class="u-chip">✨ Girls Who Code • ERHS Chapter</span>
+
+                <h1 class="hero__title">Girls Who Code</h1>
+
+                <p class="hero__tagline">
+                  A global organization dedicated to empowering girls and gender-diverse students to pursue computer science.
+                </p>
+
+                <div class="hero__cta">
+                  <a class="btn" href="hour-of-code.html">Explore Hour of Code</a>
+                  <a class="btn btn--ghost" href="contact.html">Join / Contact</a>
+                </div>
+              </div>
+
+              <div class="hero__image">
+                <img src="assets/images/heropic.png" alt="GWC ERHS students teaching coding" />
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+
+
+    <!-- =========================================================
+         WHAT ARE WE
+    ========================================================== -->
+    <section class="section">
+      <div class="u-container u-stack-lg">
+        <div class="panel">
+          <h2 class="section__title">What are we?</h2>
+          <p class="section__subtitle">
+            The Girls Who Code club at Eleanor Roosevelt High School (eSTEM) is dedicated to inspiring the next generation of innovators through creativity, collaboration, and code!
+            Through workshops, events, and peer learning, we encourage students to see themselves as innovators and leaders in STEM.
+          </p>
+        </div>
+
+        <!-- =========================================================
+             WHAT WE DO (3 cards)
+        ========================================================== -->
+        <div class="card-grid">
+          <div class="card">
+            <h3 class="card__title">Workshops</h3>
+            <p class="card__body">Beginner-friendly lessons, projects, and hands-on coding practice.</p>
+          </div>
+          <div class="card">
+            <h3 class="card__title">Hour of Code</h3>
+            <p class="card__body">We organize and teach Hour of Code sessions for students and schools.</p>
+          </div>
+          <div class="card">
+            <h3 class="card__title">Community</h3>
+            <p class="card__body">A team that supports each other—learning, leadership, and outreach.</p>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             QUICK JOIN BLOCK
+        ========================================================== -->
+        <div class="panel u-stack">
+          <h2 class="section__title">Want to join?</h2>
+          <p class="section__subtitle">
+            Join our classroom + Remind to get updates. If you’re not sure yet, message us—we’ll help.
+          </p>
+          <div class="hero__cta">
+            <a class="btn" href="contact.html">See all links</a>
+            <a class="btn btn--ghost" href="officers.html">Meet the officers</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+  <footer class="site-footer">
+    <div class="u-container footer">
+      <div class="footer__small">© <span id="year">2026</span> GWC @ ERHS • Built by students</div>
+      <div class="footer__links">
+        <a class="link" href="hour-of-code.html">Hour of Code</a>
+        <a class="link" href="contact.html">Contact</a>
+        <a class="link" href="officers.html">Officer Board</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       NOTE
+  ========================================================== -->
+  <script>
+    // Updates the year in footer (optional convenience)
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

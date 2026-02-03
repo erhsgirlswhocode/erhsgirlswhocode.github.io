@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | GWC @ ERHS</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  
+  <!-- =========================================================
+       HEADER / NAV
+  ========================================================== -->
+  <header class="site-header">
+    <div class="u-container nav">
+      <div class="nav__brand">
+        <div class="brand__logo">
+          <img src="assets/images/logo.png" alt="GWC ERHS Logo">
+        </div>
+        <div class="brand__text">
+          <div class="brand__title">GWC @ ERHS</div>
+          <div class="brand__sub">Eleanor Roosevelt High School</div>
+        </div>
+      </div>
+
+      <nav class="nav__links" aria-label="Main Navigation">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link" href="hour-of-code.html">Hour of Code</a>
+        <a class="nav__link nav__link--active" href="contact.html">Contact</a>
+        <a class="nav__link" href="officers.html">Officer Board</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- =========================================================
+         CONTACT INTRO
+    ========================================================== -->
+    <section class="section">
+      <div class="u-container u-stack-lg">
+        <div class="panel">
+          <h1 class="section__title">Contact</h1>
+          <p class="section__subtitle">
+            For partnerships (Hour of Code requests) or any other questions, please contact us through:
+          </p>
+        </div>
+
+        <!-- =========================================================
+             CONTACT LINKS
+        ========================================================== -->
+        <div class="card-grid">
+          <div class="card">
+            <h2 class="card__title">GWC Email</h2>
+            <p class="card__body">
+              <a class="link" href="mailto:girlswhocode.erhs@gmail.com">
+                girlswhocode.erhs@gmail.com
+              </a>
+            </p>
+          </div>
+
+          <div class="card">
+            <h2 class="card__title">Advisor Email</h2>
+            <p class="card__body">
+              <a class="link" href="mailto:Scott.Usher@cnusd.k12.ca.us">
+                Scott.Usher@cnusd.k12.ca.us
+              </a>
+            </p>
+          </div>
+
+          <div class="card">
+            <h2 class="card__title">Instagram</h2>
+            <p class="card__body">
+              <a class="link" href="https://www.instagram.com/erhs.gwc/" target="_blank" rel="noopener">
+                @erhs.gwc
+              </a>
+            </p>
+          </div>
+
+          <div class="card">
+            <h2 class="card__title">Google Classroom</h2>
+            <p class="card__body">
+              Classroom Code: <strong>i5caxtn</strong>
+            </p>
+          </div>
+
+          <div class="card">
+            <h2 class="card__title">Remind</h2>
+            <p class="card__body">
+              Join using code: <strong>@gwc20256</strong>
+            </p>
+          </div>
+
+          <div class="card">
+            <h2 class="card__title">Hour of Code Request</h2>
+            <p class="card__body">
+              <a
+                class="link"
+                href="https://forms.gle/KnbQhjG4JrqvBzEF6"
+                target="_blank"
+                rel="noopener"
+              >
+                Teacher Request Form
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             PARTNERSHIP NOTE
+        ========================================================== -->
+        <div class="panel u-stack">
+          <h2 class="section__title">Partnership Notes</h2>
+          <p class="section__subtitle">
+            We welcome collaboration inquiries from teachers, student organizations,
+    and community partners interested in supporting computer science education.
+          </p>
+          <p class="u-muted">
+            If you’re reaching out about a partnership, please briefly describe your idea,
+    your timeline, and the best way to contact you.
+          </p>
+          <p class="u-muted">
+            Typical response time: 1–2 school days.
+          </p>
+        </div>
+        
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+  <footer class="site-footer">
+    <div class="u-container footer">
+      <div class="footer__small">© <span id="year">2026</span> GWC @ ERHS</div>
+      <div class="footer__links">
+        <a class="link" href="index.html">Home</a>
+        <a class="link" href="hour-of-code.html">Hour of Code</a>
+        <a class="link" href="officers.html">Officer Board</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

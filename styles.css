@@ -1,0 +1,831 @@
+/* =========================================================
+   GWC ERHS WEBSITE - GLOBAL STYLES (Pastel Pixel UI Theme)
+   (Scaled Down Edition)
+========================================================= */
+
+/* ---------- CSS Reset (clean + consistent) ---------- */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+img { max-width: 100%; display: block; image-rendering: pixelated; }
+a { color: inherit; text-decoration: none; }
+
+/* kill annoying default spacing differences */
+p { margin: 0; }
+ul, ol { margin: 0; padding-left: 18px; }
+li { margin: 0; }
+strong, b { font-weight: 700; }
+
+/* =========================================================
+   THEME TOKENS
+========================================================= */
+:root{
+  /* Palette */
+  --bg: #ffe4ef;
+  --bg-2: #fff2f8;
+
+  --panel: #fff7fb;
+  --panel-2: #fff1f7;
+
+  --text: #5a2b44;
+  --muted: #8a4f73;
+
+  --pink: #ff5fb5;
+  --pink-2: #ff8fcb;
+  --pink-3: #ffc3e4;
+
+  /* Line / border */
+  --line: rgba(255, 95, 181, 0.75);
+
+  /* Layout */
+  --container: clamp(320px, 92vw, 1180px);
+
+  /* Pixel feel (smaller) */
+  --pixel: 2px;       /* main border thickness */
+  --pixel-2: 1px;     /* inner line */
+  --cut: 10px;        /* cut-corner size */
+  --step: 6px;        /* shadow step distance */
+
+  /* Shadows (pixel step) */
+  --shadow-step: var(--step) var(--step) 0 rgba(255, 95, 181, 0.18);
+  --shadow-step-soft: calc(var(--step) + 2px) calc(var(--step) + 5px) 0 rgba(255, 95, 181, 0.12);
+
+  /* Background pattern sizes (slightly smaller) */
+  --dot: 9px;
+  --grid: 52px;
+
+  /* Fonts */
+  --font-title: "Jersey 25", ui-monospace, Menlo, Monaco, Consolas, "Courier New", monospace;
+  --font-body: "VT323", ui-monospace, Menlo, Monaco, Consolas, "Courier New", monospace;
+
+  /* Type scale (smaller overall, still title > body) */
+  --body: 18px;
+
+  --t-sm: 16px;        /* nav, chips, small labels */
+  --t-md: 22px;        /* card titles, FAQ question, officer name */
+  --t-lg: 30px;        /* section titles */
+  --t-xl: clamp(36px, 4.2vw, 58px); /* hero title */
+
+  /* Consistent title->body gaps (smaller) */
+  --gap-xl: 16px;
+  --gap-lg: 14px;
+  --gap-md: 10px;
+  --gap-sm: 8px;
+}
+
+/* =========================================================
+   PIXEL SHAPES (Reusable)
+========================================================= */
+.pixel-box{
+  clip-path: polygon(
+    var(--cut) 0,
+    calc(100% - var(--cut)) 0,
+    100% var(--cut),
+    100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%,
+    var(--cut) 100%,
+    0 calc(100% - var(--cut)),
+    0 var(--cut)
+  );
+}
+
+/* =========================================================
+   BODY / BACKGROUND
+========================================================= */
+body{
+  font-family: var(--font-body);
+  font-size: var(--body);
+  color: var(--text);
+  line-height: 1.5;
+
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,95,181,0.16), transparent 45%),
+    radial-gradient(circle at 80% 22%, rgba(255,143,203,0.18), transparent 50%),
+    radial-gradient(circle at 50% 92%, rgba(255,195,228,0.20), transparent 48%),
+    linear-gradient(180deg, var(--bg-2), var(--bg));
+}
+
+/* Pixel-ish pattern overlay */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle, rgba(255,95,181,0.12) 1px, transparent 1.6px) 0 0 / var(--dot) var(--dot),
+    linear-gradient(90deg, rgba(255,95,181,0.05) 1px, transparent 1px) 0 0 / var(--grid) var(--grid),
+    linear-gradient(rgba(255,95,181,0.05) 1px, transparent 1px) 0 0 / var(--grid) var(--grid),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.03) 0px,
+      rgba(255,255,255,0.03) 2px,
+      rgba(255,255,255,0.00) 4px,
+      rgba(255,255,255,0.00) 6px
+    );
+
+  opacity: 0.8;
+  mix-blend-mode: multiply;
+}
+
+/* =========================================================
+   GLOBAL TYPOGRAPHY RULES
+========================================================= */
+h1, h2, h3, h4,
+.brand__title,
+.hero__title,
+.section__title,
+.card__title,
+.nav__link,
+.btn,
+.table th,
+.faq__q,
+.officer__name{
+  font-family: var(--font-title);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+h1, h2, h3, h4{ margin: 0; }
+
+/* Title sizing system */
+.hero__title, h1{ font-size: var(--t-xl); letter-spacing: 1px; text-transform: uppercase; }
+.section__title, h2{ font-size: var(--t-lg); letter-spacing: 0.5px; }
+.card__title, h3{ font-size: var(--t-md); letter-spacing: 0.35px; }
+.faq__q, .officer__name, h4{ font-size: var(--t-md); letter-spacing: 0.3px; }
+
+.brand__title{ font-size: var(--t-lg); letter-spacing: 0.5px; text-transform: uppercase; }
+.nav__link{ font-size: var(--t-sm); letter-spacing: 0.25px; }
+.btn{ font-size: var(--t-sm); letter-spacing: 0.25px; }
+.table th{ font-size: var(--t-sm); letter-spacing: 0.2px; }
+
+/* Title spacing system */
+.hero__title{ margin: 0 0 var(--gap-xl) 0; }
+.section__title{ margin: 0 0 var(--gap-lg) 0; }
+.card__title, h3{ margin: 0 0 var(--gap-md) 0; }
+.faq__q{ margin: 0 0 var(--gap-sm) 0; }
+.officer__name{ margin: 0 0 var(--gap-sm) 0; }
+
+.u-muted{ color: var(--muted); }
+
+/* =========================================================
+   UTILITIES
+========================================================= */
+.u-container{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: clamp(14px, 2vw, 26px) clamp(12px, 1.8vw, 22px);
+  position: relative;
+}
+
+.u-stack{ display: grid; gap: 12px; }
+.u-stack-lg{ display: grid; gap: 18px; }
+.u-center{ text-align: center; }
+
+/* Chip */
+.u-chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+
+  border: var(--pixel) solid var(--line);
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 5px 5px 0 rgba(255,95,181,0.12);
+
+  clip-path: polygon(
+    8px 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    8px 100%,
+    0 calc(100% - 8px),
+    0 8px
+  );
+
+  font-family: var(--font-title);
+  font-size: var(--t-sm);
+  letter-spacing: 0.2px;
+}
+
+/* =========================================================
+   HEADER / NAV
+========================================================= */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  background: rgba(255, 247, 251, 0.92);
+  backdrop-filter: blur(10px);
+
+  border-bottom: var(--pixel) solid var(--line);
+}
+
+.nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Header Brand */
+.nav__brand{
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+
+/* Logo */
+.brand__logo{
+  height: 58px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  image-rendering: pixelated;
+
+  border: none;
+  background: none;
+  box-shadow: none;
+  clip-path: none;
+
+  flex-shrink: 0;
+}
+
+.brand__logo img{
+  width: auto;
+  height: 58px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  display: block;
+}
+
+.brand__sub{
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.2;
+}
+
+/* Nav links: pixel tabs */
+.nav__links{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.nav__link{
+  padding: 8px 10px;
+  color: var(--text);
+
+  border: var(--pixel) solid transparent;
+  background: rgba(255,255,255,0.72);
+  box-shadow: 5px 5px 0 rgba(255,95,181,0.10);
+
+  clip-path: polygon(
+    10px 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0 calc(100% - 10px),
+    0 10px
+  );
+
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+}
+
+.nav__link:hover{
+  border-color: var(--line);
+  transform: translateY(-1px);
+  box-shadow: 7px 7px 0 rgba(255,95,181,0.14);
+}
+
+.nav__link--active{
+  border-color: var(--pink);
+  background: rgba(255,195,228,0.85);
+  box-shadow: 7px 7px 0 rgba(255,95,181,0.16);
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+.section{
+  padding: clamp(14px, 1.8vw, 26px) 0;
+  position: relative;
+}
+
+.section__subtitle{
+  margin: 0 0 12px 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+/* =========================================================
+   PANELS / CARDS
+========================================================= */
+.panel{
+  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,241,247,0.92));
+  border: var(--pixel) solid var(--line);
+
+  clip-path: polygon(
+    var(--cut) 0,
+    calc(100% - var(--cut)) 0,
+    100% var(--cut),
+    100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%,
+    var(--cut) 100%,
+    0 calc(100% - var(--cut)),
+    0 var(--cut)
+  );
+
+  box-shadow: var(--shadow-step-soft);
+  padding: clamp(14px, 1.8vw, 18px);
+  position: relative;
+}
+
+.panel::before{
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: var(--pixel-2) solid rgba(255,95,181,0.25);
+  pointer-events: none;
+
+  clip-path: polygon(
+    calc(var(--cut) - 5px) 0,
+    calc(100% - (var(--cut) - 5px)) 0,
+    100% calc(var(--cut) - 5px),
+    100% calc(100% - (var(--cut) - 5px)),
+    calc(100% - (var(--cut) - 5px)) 100%,
+    calc(var(--cut) - 5px) 100%,
+    0 calc(100% - (var(--cut) - 5px)),
+    0 calc(var(--cut) - 5px)
+  );
+}
+
+.card-grid{
+  display: grid;
+  gap: clamp(10px, 1.2vw, 14px);
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.card{
+  grid-column: span 12;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,241,247,0.95));
+  border: var(--pixel) solid var(--line);
+
+  clip-path: polygon(
+    12px 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    12px 100%,
+    0 calc(100% - 12px),
+    0 12px
+  );
+
+  box-shadow: var(--shadow-step);
+  padding: 14px;
+}
+
+.card__body{
+  color: var(--muted);
+  font-size: 16px;
+}
+
+/* =========================================================
+   BUTTONS / LINKS
+========================================================= */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 12px;
+  border: var(--pixel) solid var(--pink);
+
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,195,228,0.65));
+  color: var(--text);
+
+  cursor: pointer;
+
+  clip-path: polygon(
+    12px 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    12px 100%,
+    0 calc(100% - 12px),
+    0 12px
+  );
+
+  box-shadow: var(--shadow-step);
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 8px 8px 0 rgba(255,95,181,0.18);
+}
+
+.btn:active{
+  transform: translate(2px, 2px);
+  box-shadow: 5px 5px 0 rgba(255,95,181,0.14);
+}
+
+.btn--ghost{
+  border-color: var(--line);
+  background: rgba(255,255,255,0.80);
+  box-shadow: 6px 6px 0 rgba(255,95,181,0.12);
+}
+
+.link{
+  color: #c21872;
+  border-bottom: 2px dotted rgba(194, 24, 114, 0.45);
+}
+
+.link:hover{
+  color: #ff3aa6;
+  border-bottom-color: rgba(255,58,166,0.70);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+.hero{
+  padding: clamp(14px, 2vw, 26px) 0 8px 0;
+}
+
+.hero__panel{
+  padding: clamp(16px, 2vw, 22px);
+  position: relative;
+  overflow: hidden;
+
+  /* ✅ layout: text + image */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+@media (min-width: 980px){
+  .hero__panel{
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+  }
+}
+
+.hero__panel::after{
+  content: "";
+  position: absolute;
+  inset: -36px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.95) 1.2px, transparent 2px) 0 0 / 64px 64px,
+    radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 2px) 22px 34px / 86px 86px;
+  opacity: 0.35;
+}
+
+.hero__tagline{
+  margin: 0;
+  color: var(--muted);
+  max-width: none;
+  font-size: 16px;
+}
+
+.hero__cta{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.hero__image{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__image img{
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+
+  border: var(--pixel) solid var(--line);
+  box-shadow: var(--shadow-step);
+
+  clip-path: polygon(
+    var(--cut) 0,
+    calc(100% - var(--cut)) 0,
+    100% var(--cut),
+    100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%,
+    var(--cut) 100%,
+    0 calc(100% - var(--cut)),
+    0 var(--cut)
+  );
+}
+
+/* =========================================================
+   TWO COLUMN (Hour of Code)
+========================================================= */
+.twocol{
+  display: grid;
+  gap: clamp(10px, 1.3vw, 14px);
+  grid-template-columns: 1fr;
+}
+
+.list{
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+/* =========================================================
+   TABLES
+========================================================= */
+.table{
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border: var(--pixel) solid var(--line);
+
+  clip-path: polygon(
+    12px 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    12px 100%,
+    0 calc(100% - 12px),
+    0 12px
+  );
+
+  background: rgba(255,255,255,0.82);
+  box-shadow: var(--shadow-step);
+}
+
+.table th, .table td{
+  padding: 10px 9px;
+  border-bottom: 1px solid rgba(255,95,181,0.25);
+  vertical-align: top;
+}
+
+.table th{
+  text-align: left;
+  color: var(--text);
+  background: rgba(255,195,228,0.75);
+}
+
+.table td{
+  color: var(--muted);
+  font-size: 16px;
+}
+
+/* =========================================================
+   HOUR OF CODE - PHOTO GRID
+   Purpose: many small photos without feeling crowded
+========================================================= */
+.hoc-photos{
+  margin-top: 14px;
+  padding-top: 10px;
+
+  /* subtle separator so it feels intentional */
+  border-top: 1px solid rgba(255,95,181,0.22);
+
+  display: grid;
+  gap: 8px;
+
+  /* auto-fit so it fills space nicely */
+  grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+}
+
+.hoc-photos img{
+  width: 100%;
+  height: auto;
+
+  /* small collage look */
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+
+  border: var(--pixel) solid var(--pink);
+  background: rgba(255,255,255,0.9);
+
+  box-shadow: 4px 4px 0 rgba(255,95,181,0.12);
+
+  clip-path: polygon(
+    8px 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    8px 100%,
+    0 calc(100% - 8px),
+    0 8px
+  );
+
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.hoc-photos img:hover{
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0 rgba(255,95,181,0.14);
+}
+
+/* optional: slightly more tiles on big screens */
+@media (min-width: 980px){
+  .hoc-photos{
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 10px;
+  }
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+.faq{
+  display: grid;
+  gap: 8px;
+}
+
+.faq__item{
+  border: var(--pixel) solid var(--line);
+  background: rgba(255,255,255,0.82);
+  padding: 10px 12px;
+  box-shadow: 6px 6px 0 rgba(255,95,181,0.12);
+
+  clip-path: polygon(
+    12px 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    12px 100%,
+    0 calc(100% - 12px),
+    0 12px
+  );
+}
+
+.faq__a{
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+/* =========================================================
+   OFFICERS
+========================================================= */
+.officer-grid{
+  display: grid;
+  gap: clamp(10px, 1.3vw, 14px);
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.officer{
+  grid-column: span 12;
+  display: grid;
+  gap: 10px;
+
+  grid-template-columns: 140px 1fr;
+
+  align-items: start;
+
+  background: rgba(255,255,255,0.82);
+  border: var(--pixel) solid var(--line);
+  padding: 12px;
+  box-shadow: var(--shadow-step);
+
+  clip-path: polygon(
+    12px 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    12px 100%,
+    0 calc(100% - 12px),
+    0 12px
+  );
+}
+
+.officer h1, .officer h2, .officer h3, .officer h4,
+.officer p, .officer ul, .officer ol, .officer li{
+  margin: 0;
+}
+
+.officer__photo{
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+
+  border: var(--pixel) solid var(--pink);
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.95),
+    rgba(255,195,228,0.65)
+  );
+
+  box-shadow: 5px 5px 0 rgba(255,95,181,0.12);
+
+  clip-path: polygon(
+    12px 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    12px 100%,
+    0 calc(100% - 12px),
+    0 12px
+  );
+}
+
+.officer__photo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.officer__body{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.officer__meta,
+.officer__intro{
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.35;
+  margin: 0;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.site-footer{
+  margin-top: 22px;
+  border-top: var(--pixel) solid var(--line);
+  background: rgba(255, 247, 251, 0.88);
+}
+
+.footer{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+.footer__small{
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.footer__links{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+@media (min-width: 720px){
+  .card{ grid-column: span 4; }
+  .twocol{ grid-template-columns: 1fr 1fr; }
+  .officer{ grid-column: span 6; }
+}
+
+@media (min-width: 980px){
+  .officer{
+    grid-column: span 4;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .officer__photo{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+  }
+
+}
+
+/* Reduce motion if user prefers */
+@media (prefers-reduced-motion: reduce){
+  .btn, .nav__link{ transition: none; }
+  .btn:hover, .nav__link:hover{ transform: none; }
+}
